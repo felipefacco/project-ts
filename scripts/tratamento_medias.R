@@ -12,7 +12,14 @@ if(sum(as.numeric(!pacotes %in% installed.packages())) != 0){
   sapply(pacotes, require, character = T)
 }
 
-
+xco2_2015_amazonas <- read.csv("data-raw/xco2_2015_amazonas.csv", sep = "," )
+xco2_2016_amazonas <- read.csv("data-raw/xco2_2016_amazonas.csv", sep = "," )
+xco2_2017_amazonas <- read.csv("data-raw/xco2_2017_amazonas.csv", sep = "," )
+xco2_2018_amazonas <- read.csv("data-raw/xco2_2018_amazonas.csv", sep = "," )
+xco2_2019_amazonas <- read.csv("data-raw/xco2_2019_amazonas.csv", sep = "," )
+xco2_2020_amazonas <- read.csv("data-raw/xco2_2020_amazonas.csv", sep = "," )
+xco2_2021_amazonas <- read.csv("data-raw/xco2_2021_amazonas.csv", sep = "," )
+xco2_2022_amazonas <- read.csv("data-raw/xco2_2022_amazonas.csv", sep = "," )
 
 xco2_df <- bind_rows(xco2_2015_amazonas,
                      xco2_2016_amazonas,
