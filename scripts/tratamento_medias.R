@@ -30,12 +30,22 @@ xco2_df <- bind_rows(xco2_2015_amazonas,
                      xco2_2021_amazonas,
                      xco2_2022_amazonas)
 
+xco2_df <- bind_rows(xco2_2015_area_1,
+                     xco2_2016_area_1,
+                     xco2_2017_area_1,
+                     xco2_2018_area_1,
+                     xco2_2019_area_1,
+                     xco2_2020_area_1,
+                     xco2_2021_area_1,
+                     xco2_2022_area_1)
+
+
 summary(xco2_df)
 
 ################################################################################
 ######################## criando a tabela de médias mensais ####################
 ################################################################################
-
+view(medias)
 medias <- xco2_df %>% 
   group_by(data = yearmonth(date)) %>% 
   summarise(media=mean(xco2))
@@ -43,8 +53,10 @@ medias <- xco2_df %>%
 # Adicionando e interpolando Ago 2017 utilizando a função na.approx
 
 medias_inter <- medias %>% 
+#  tibble::add_row(data = yearmonth("2015-10"), media = NA,.after = 09) %>% 
   tibble::add_row(data = yearmonth("2017-08"), media = NA,.after = 31) %>% 
   mutate(media_interpolada = na.approx(media))
+view(medias_inter)
 
 # Salvando a tabela de medias interpolada
 
